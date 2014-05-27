@@ -13,7 +13,7 @@ import java.util.TreeSet;
  * @author Tony
  */
 public class KdTree {
-    private static int size;
+    private int size;
     private Node root;
     
     private static class Node {
@@ -92,8 +92,15 @@ public class KdTree {
     private boolean containsLoop(Node node, Point2D p) {
         if (node == null)
             return false;
-        if (node.p.equals(p) || containsLoop(node.lb, p) || containsLoop(node.rt, p)) {
+        else if (node.p.equals(p))
             return true;
+        if (p.x() < node.p.x() || p.y() < node.p.y()) {
+            if (containsLoop(node.lb, p))
+                return true;
+        }
+        else if(p.x() > node.p.x() || p.y() > node.p.y()) {
+            if (containsLoop(node.rt, p))
+                return true;
         }
         return false;
     }    
