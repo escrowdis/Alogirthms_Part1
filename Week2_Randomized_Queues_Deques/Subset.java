@@ -22,7 +22,7 @@ public class Subset {
         
         for (int i=0; i<K; i++) {
 //            StdOut.print(dq.iterator().next() + " ");
-            StdOut.print(rq.iterator().next());
+            StdOut.println(rq.iterator().next());
         }
     }
 }
